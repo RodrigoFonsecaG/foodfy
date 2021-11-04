@@ -1,0 +1,72 @@
+#recipes .receita {
+  margin: 0 auto;
+}
+
+#recipes .receita img{
+  object-fit: cover;
+}
+
+#recipes .modal-background {
+  display: none;
+  position: fixed;
+  top: 0;
+  background: rgba(0, 0, 0, 0.7);
+  height: 100vh;
+  width: 100vw;
+}
+
+#recipes .modal-background.ativo{
+  display: block;
+}
+
+#recipes .modal {
+  display: flex;
+  height: 100%;
+
+  margin: 0 auto;
+
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#recipes .modal-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  width: 50vw;
+  height: 440px;
+  border-radius: 15px;
+}
+
+#recipes .modal-info img {
+  max-width: none !important;
+  max-height: none !important;
+  border-radius: 15px;
+  width: 90%;
+  height: 200px;
+  object-fit: cover;
+}
+
+#recipes .modal-info .food-info {
+  text-align: center;
+}
+
+#recipes .modal-info .food-info h3 {
+  margin-top: 20px;
+  font-size: 1.5rem;
+}
+
+#recipes .modal-info .food-info p {
+  font-size: 1rem;
+  margin-top: 5px;
+}
+
+#recipes .close-modal {
+  cursor: pointer;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-top: 2rem;
+}

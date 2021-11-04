@@ -1,0 +1,8 @@
+#about .container h1{
+    margin-top: 1.875rem;
+    margin-bottom: 1.25rem;
+}
+
+#about .how-start h1, .our-recipes h1{
+    font-size: 20px;
+}

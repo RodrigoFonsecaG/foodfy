@@ -1,0 +1,38 @@
+header nav{
+display: flex;
+align-items: center;
+justify-content: space-between;
+margin: 2rem 0;
+}
+
+header .links a{
+    margin-left: 1.875rem;
+    color: var(--title-color);
+}
+
+
+#home .container{
+   background-color: #FBDFDB; 
+   border-radius: 30px;
+
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: space-around;
+   align-items: center;
+   padding: 3rem 1rem;
+}
+
+#home .text {
+    max-width: 30rem;
+}
+
+#home .text h1{
+font-size: 2rem;
+}
+
+#home .text p{
+    font-size: 1rem;
+    color: var(--text-color);
+    max-width: 20rem;
+    margin-top: 10px;
+}
