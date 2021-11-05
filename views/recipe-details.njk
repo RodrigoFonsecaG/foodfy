@@ -4,6 +4,7 @@
         {{ recipe.title }}</title>
 {% endblock title %}
 {% block styles %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.css"/>
     <link rel="stylesheet" href="../styles/main.css">
     {% endblock styles %}
     {% block content %}
@@ -17,20 +18,40 @@
                     </div>
                     <div class="food-info">
                         <div class="ingredients">
-                            <h2>Ingredientes</h2>
-                            {% for ingredient in recipe.ingredients %}
-                                <li>{{ ingredient }}</li>
-                            {% endfor %}
+                            <div class="title">
+                                <h2>Ingredientes</h2>
+                                <button>Esconder</button>
+                            </div>
+                            <div class="info">
+                                {% for ingredient in recipe.ingredients %}
+                                    <li>{{ ingredient }}</li>
+                                {% endfor %}
+                            </div>
                         </div>
                         <div class="preparation">
-                            <h2>Modo de preparo</h2>
-                            <p>{{ recipe.preparation }}</p>
+                            <div class="title">
+                                <h2>Modo de preparo</h2>
+                                <button>Esconder</button>
+                            </div>
+                            <div class="info">
+                                {% for prep in recipe.preparation %}
+                                    <p>{{ prep }}</p>
+                                {% endfor %}
+                            </div>
                         </div>
                         <div class="aditional">
-                            <h2>Informações adicionais</h2>
-                            <p>{{ recipe.information }}</p>
+                            <div class="title">
+                                <h2>Informações adicionais</h2>
+                                <button>Esconder</button>
+                            </div>
+                            <div class="info">
+                                <p>{{ recipe.information }}</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </section>
         {% endblock content %}
+        {% block scripts %}
+            <script src="/scripts/tooltip.js"></script>
+        {% endblock scripts %}

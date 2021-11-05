@@ -18,11 +18,24 @@
     font-size: 1.25rem;
 }
 
+#recipe-details .title{
+    display: flex;
+    align-items: center;
+}
+
+#recipe-details .title button{
+    max-height: 30px;
+}
+
+#recipe-details .info.disabled{
+    display: none;
+}
+
 
 #recipe-details .food-info h2{
     font-weight: bold;
     font-size: 1.5rem;
-    margin: 2rem 0;
+    margin: 2rem 1rem 2rem 0;
 }
 
 #recipe-details .food-info p,#recipe-details .food-info li{
