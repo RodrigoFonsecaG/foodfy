@@ -5,10 +5,13 @@ function showContent() {
   btns.forEach((btn, index) => {
     btn.addEventListener('click', () => {
       contentInfos[index].classList.toggle('disabled');
+      if (btn.innerHTML == 'Esconder') {
+        btn.innerHTML = 'Mostrar';
+      } else {
+        btn.innerHTML = 'Esconder';
+      }
     });
   });
-
-
 }
 
 showContent();
