@@ -1,0 +1,36 @@
+<img src="{{ recipe.image }}" alt="{{ recipe.title }}">
+    <div class="food-title">
+        <h1>{{ recipe.title }}</h1>
+        <p>por
+            {{ recipe.author }}</p>
+    </div>
+    <div class="food-info">
+        <div class="ingredients">
+            <div>
+                <h2>Ingredientes</h2>
+            </div>
+            <div class="info">
+                {% for ingredient in recipe.ingredients %}
+                    <li>{{ ingredient }}</li>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="preparation">
+            <div>
+                <h2>Modo de preparo</h2>
+            </div>
+            <div class="info">
+                {% for prep in recipe.preparations %}
+                    <p>{{ prep }}</p>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="aditional">
+            <div>
+                <h2>Informações adicionais</h2>
+            </div>
+            <div class="info">
+                <p>{{ recipe.information }}</p>
+            </div>
+        </div>
+    </div>

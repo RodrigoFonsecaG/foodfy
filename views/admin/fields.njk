@@ -1,0 +1,45 @@
+<div class="item">
+    <h4>Nome da receita</h4>
+    <input type="text" name="title" id="title" value="{{ recipe.title }}"></div>
+    <div class="item">
+        <h4>Autor da receita</h4>
+        <input type="text" name="author" id="author" value="{{ recipe.author }}"></div>
+        <div class="item">
+            <h4>Imagem da receita</h4>
+            <input type="url" name="image" id="image" placeholder="https://" value="{{ recipe.image }}"></div>
+            <div class="item">
+                <h4>Ingredientes</h4>
+                <div class="ingredients">
+                    {% if recipe %}
+                        {% for ingredient in recipe.ingredients %}
+                            <div class="ingredient">
+                                <input type="text" name="ingredients[]" id="ingredients" value="{{ ingredient }}"></div>
+                            {% endfor %}
+                        {% else %}
+                            <div class="ingredient">
+                                <input type="text" name="ingredients[]" id="ingredients"></div>
+                            {% endif %}
+                        </div>
+                        <p class="add-ingredient">Adicionar novo ingrediente</p>
+                    </div>
+                    <div class="item">
+                        <h4>Modo de preparo</h4>
+                        <div class="preparations">
+                                                {% if recipe %}
+                        {% for preparation in recipe.preparations %}
+                            <div class="preparation">
+                                <input type="text" name="preparations[]" id="preparations" value="{{ preparation }}">
+                            </div>
+                                {% endfor %}
+                                {% else %}
+                                <div class="preparation">
+                                <input type="text" name="preparations[]" id="preparations"></div>
+                                {% endif %}
+                            </div>
+                            <p class="add-preparation">Adicionar novo passo</p>
+                        </div>
+                        <div class="item">
+                            <h4>Informações adicionais</h4>
+                            <textarea name="information" id="information">{{ recipe.information}}</textarea>
+                        </div>
+                        <script src="/scripts/dynamicField.js"></script>

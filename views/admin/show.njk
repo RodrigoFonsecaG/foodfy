@@ -1,0 +1,23 @@
+{% extends "layout.njk" %}
+{% block title %}
+    <title>Foodfy - Receitas</title>
+{% endblock title %}
+{% block header %}
+    <header id="header" class="admin">
+        <nav class="container">
+            <a href="/">
+                <img src="/assets/logo-alt.png " alt="Logo foodfy" class="logo"></a>
+        </nav>
+    </header>
+{% endblock header %}
+{% block content %}
+    <section id="recipe-details">
+        <div class="container">
+            <div class="title">
+                <h2>Receita: {{recipe.title}}</h2>
+               <a href="/admin/recipes/{{recipe.id}}/edit"><button>Editar receita</button></a>
+            </div>
+            {%include "show-layout.njk" %}
+        </div>
+    </section>
+{% endblock content %}

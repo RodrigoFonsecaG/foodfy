@@ -1,0 +1,16 @@
+{% extends "layout.njk" %}
+{% block title %}
+    <title>Foodfy -
+        {{ recipe.title }}</title>
+{% endblock title %}
+{% block styles %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.css"/>
+    <link rel="stylesheet" href="../styles/main.css">
+    {% endblock styles %}
+    {% block content %}
+        <section id="recipe-details">
+            <div class="container">
+                {% include 'show-layout.njk' %}
+            </div>
+        </section>
+    {% endblock content %}

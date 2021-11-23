@@ -4,6 +4,7 @@
 
 #recipes .receita img{
   object-fit: cover;
+  
 }
 
 #recipes .modal-background {

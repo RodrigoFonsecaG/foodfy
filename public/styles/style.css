@@ -18,6 +18,7 @@ a {
 :root {
   --title-color: #111111;
   --text-color: #777777;
+  --purple-color: #6558C3;
 }
 
 /*==================== BASE ======================*/
@@ -43,6 +44,18 @@ h3 {
 
 .links a.active {
   font-weight: bold;
+}
+
+button{
+  border:none;
+  font-size: 16px !important;
+  padding: 0.7rem 1rem;
+  background-color: var(--purple-color);
+  border-radius: 4px;
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
 }
 
 /*==================== LAYOUT ======================*/

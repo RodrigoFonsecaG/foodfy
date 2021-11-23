@@ -1,40 +1,21 @@
 const express = require('express');
 const nunjucks = require('nunjucks');
-const recipes = require('./data.js');
-
+const routes = require('./routes.js');
+const methodOverride = require('method-override');
 
 const server = express();
 
-server.use(express.static("public"));
+server.use(express.urlencoded({ extended: true }));
 
-nunjucks.configure("views", {
-    express: server,
-    noCache: true
-})
+server.use(express.static('public'));
 
-server.get("/", (req, res) => {
-    return res.render("index.njk", {recipes});
-})
+server.use(methodOverride('_method'));
 
-server.get("/recipes", (req, res) => {
-    return res.render("recipes.njk", {recipes});
-})
+server.use(routes);
 
-server.get("/about", (req, res) => {
-    return res.render("about.njk");
-})
-
-server.get("/recipes/:index", function (req, res) {
-    //Pega na url o numero do index
-    const recipeIndex = req.params.index;
-
-    // Vai nas receitas e seleciona aquela
-    // que tem o mesmo index da url
-    const recipe = recipes[recipeIndex]
-  
-    // Renderiza uma pagina de detalhes da receitas
-    // E envia somente a receita que tem o index da url
-    return res.render("recipe-details.njk", {recipe});
-})
+nunjucks.configure('views', {
+  express: server,
+  noCache: true
+});
 
 server.listen('3000');

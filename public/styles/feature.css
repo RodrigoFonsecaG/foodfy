@@ -16,7 +16,7 @@
 
 
 .receita img {
-    max-width: 300px;
+    width: 300px;
     height: 140px;
     border-radius: 16px;
     object-fit: cover;

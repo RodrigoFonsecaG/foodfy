@@ -1,0 +1,34 @@
+{% extends "layout.njk" %}
+{% block title %}
+    <title>Foodfy - Editar</title>
+{% endblock title %}
+{% block header %}
+    <header id="header" class="admin">
+        <nav class="container">
+            <a href="/">
+                <img src="/assets/logo-alt.png " alt="Logo foodfy" class="logo"></a>
+        </nav>
+    </header>
+{% endblock header %}
+{% block content %}
+    <section id="edit admin">
+        <div class="container container-edit">
+
+        <form action="/admin/recipes?_method=DELETE" method="POST" class="delete-form">
+            <input type="hidden" name="id" value="{{recipe.id}}"/>
+            <button class="delete" type="submit" onclick="return confirm('Tem certeza que deseja deletar?')">Deletar</button>
+        </form>
+
+            <form action="/admin/recipes?_method=PUT" method="POST" class="edit-form">
+                <div class="title">
+                    <h2>Editando receita</h2>
+                        <button type="submit">Salvar receita</button>
+                </div>
+                {%include "admin/fields.njk"%}
+                <input type="hidden" name="id" value="{{recipe.id}}"/>
+            </form>
+
+
+        </div>
+    </section>
+{% endblock content %}
