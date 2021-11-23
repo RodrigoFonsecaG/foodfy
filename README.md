@@ -31,6 +31,7 @@ O site **Foodfy** é um projeto do LaunchBase, que é feita durante o curso com 
 - **NodeJS**
 - **Express**
 - **Nunjucks**
+- **Method override**
 
 ---------
 
