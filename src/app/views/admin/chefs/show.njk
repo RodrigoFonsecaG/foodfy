@@ -1,0 +1,48 @@
+{% extends "layout.njk" %}
+{% block title %}
+    <title>Foodfy -
+        {{ chef.name }}</title>
+    <link rel="stylesheet" href="/styles/adminPage.css">
+    {% endblock title %}
+    {% block header %}
+        {% include "admin/parts/admin-header.njk" %}
+    {% endblock header %}
+    {% block content %}
+        <section id="chef-details admin">
+            <div class="container">
+               
+                    <div class="header-info">
+                    <h1 class="title">Chef: {{ chef.name }}</h1>
+                    <a href="/admin/chefs/{{ chef.id }}/edit">
+                        <button>Editar Chef</button>
+                    </a>
+                    </div>
+
+
+                    <div class="chef-main-info">
+                        <img src="{{ chef.avatar_url }}" alt="Foto de {{ chef.name }}">
+                        <h1>{{ chef.name }}</h1>
+                        <p>{{chef.total_recipes}} receitas</p>
+                    </div>
+
+
+                    <div class="recipes">
+                        {% for recipe in recipes %}
+                        <li class="recipe">
+                            <img src="{{recipe.image}}" alt="">
+                                <div class="recipe-info">
+                                    <h4>{{recipe.title}}</h4>
+                                    <cite>por
+                                        {{ chef.name }}</cite>
+                                    <a href="/admin/recipes/{{recipe.recipe_id}}">Visualizar</a>
+                                </div>
+                            </li>
+                            {% endfor %}
+
+                    </div>
+
+                    
+                        
+                    </div>
+                </section>
+            {% endblock content %}

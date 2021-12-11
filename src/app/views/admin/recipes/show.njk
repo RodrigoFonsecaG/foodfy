@@ -3,12 +3,7 @@
     <title>Foodfy - Receitas</title>
 {% endblock title %}
 {% block header %}
-    <header id="header" class="admin">
-        <nav class="container">
-            <a href="/">
-                <img src="/assets/logo-alt.png " alt="Logo foodfy" class="logo"></a>
-        </nav>
-    </header>
+{% include "admin/parts/admin-header.njk" %}
 {% endblock header %}
 {% block content %}
     <section id="recipe-details">
@@ -21,3 +16,4 @@
         </div>
     </section>
 {% endblock content %}
+

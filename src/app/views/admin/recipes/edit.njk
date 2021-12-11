@@ -3,12 +3,7 @@
     <title>Foodfy - Editar</title>
 {% endblock title %}
 {% block header %}
-    <header id="header" class="admin">
-        <nav class="container">
-            <a href="/">
-                <img src="/assets/logo-alt.png " alt="Logo foodfy" class="logo"></a>
-        </nav>
-    </header>
+{% include "admin/parts/admin-header.njk" %}
 {% endblock header %}
 {% block content %}
     <section id="edit admin">
@@ -24,7 +19,7 @@
                     <h2>Editando receita</h2>
                         <button type="submit">Salvar receita</button>
                 </div>
-                {%include "admin/fields.njk"%}
+                {%include "admin/recipes/fields.njk"%}
                 <input type="hidden" name="id" value="{{recipe.id}}"/>
             </form>
 

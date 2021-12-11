@@ -4,19 +4,17 @@
 {% endblock title %}
 
 {% block header %}
-        <header id="header" class="admin">
-            <nav class="container">
-                <a href="/">
-                    <img src="/assets/logo-alt.png " alt="Logo foodfy" class="logo"></a>
-            </nav>
-        </header>
+        {% include "admin/parts/admin-header.njk" %}
 {% endblock header %}
 
 {% block content %}
     <section id="index admin">
         <div class="container">
             <div class="title">
-                <h2>Criando receita</h2>
+                <h2>Gerenciar receitas</h2>
+                <a href="/admin/recipes/create"><button>Novo</button></a>
+
+                {%include "filter.njk"%}
             </div>
             <div class="recipes">
                 {% for recipe in recipes %}
@@ -25,12 +23,15 @@
                             <div class="recipe-info">
                                 <h4>{{ recipe.title }}</h4>
                                 <cite>por
-                                    {{ recipe.author }}</cite>
+                                    {{ recipe.chef_name }}</cite>
                                 <a href="/admin/recipes/{{ recipe.id }}">Visualizar</a>
                             </div>
                     </div>
                     {% endfor %}
             </div>
+            </div>
         </div>
     </section>
     {% endblock content %}
+
+

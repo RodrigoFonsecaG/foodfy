@@ -2,7 +2,7 @@
     <div class="food-title">
         <h1>{{ recipe.title }}</h1>
         <p>por
-            {{ recipe.author }}</p>
+            {{ recipe.chef_name}}</p>
     </div>
     <div class="food-info">
         <div class="ingredients">
@@ -20,8 +20,10 @@
                 <h2>Modo de preparo</h2>
             </div>
             <div class="info">
-                {% for prep in recipe.preparations %}
-                    <p>{{ prep }}</p>
+                {% set count = 1 %}
+                {% for preparation in recipe.preparation %}
+                    <p>{{ count }} - {{ preparation }}</p>
+                    {% set count = count + 1 %}
                 {% endfor %}
             </div>
         </div>

@@ -7,67 +7,30 @@
   
 }
 
-#recipes .modal-background {
-  display: none;
-  position: fixed;
-  top: 0;
-  background: rgba(0, 0, 0, 0.7);
-  height: 100vh;
-  width: 100vw;
+.filter input{
+  padding: 0.7rem;
+  border: 1px solid #DDDDDD;;
+  border-radius: 4px;
 }
 
-#recipes .modal-background.ativo{
-  display: block;
-}
-
-#recipes .modal {
-  display: flex;
-  height: 100%;
-
-  margin: 0 auto;
-
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-#recipes .modal-info {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background-color: white;
-  width: 50vw;
-  height: 440px;
-  border-radius: 15px;
-}
-
-#recipes .modal-info img {
-  max-width: none !important;
-  max-height: none !important;
-  border-radius: 15px;
-  width: 90%;
-  height: 200px;
-  object-fit: cover;
-}
-
-#recipes .modal-info .food-info {
+.pagination{
   text-align: center;
+  margin-top: 1rem;
 }
 
-#recipes .modal-info .food-info h3 {
-  margin-top: 20px;
-  font-size: 1.5rem;
-}
-
-#recipes .modal-info .food-info p {
+.pagination a {
+  margin-right: 1rem;
   font-size: 1rem;
-  margin-top: 5px;
+  padding: 0.5rem;
+  background-color: var(--purple-color);
+  color: white;
+  border-radius: 5px;
 }
 
-#recipes .close-modal {
-  cursor: pointer;
-  font-size: 2rem;
-  font-weight: bold;
-  margin-top: 2rem;
+.pagination span{
+  margin-right: 1rem;
+}
+
+.pagination a.active{
+font-weight: bold;
 }

@@ -1,0 +1,21 @@
+{% extends "layout.njk" %}
+{% block title %}
+    <title>Foodfy - Criar</title>
+    <link rel="stylesheet" href="/styles/adminPage.css">
+{% endblock title %}
+{% block header %}
+{% include "admin/parts/admin-header.njk" %}
+{% endblock header %}
+{% block content %}
+    <section id="create admin">
+        <div class="container">
+            <form action="/admin/chefs" method="POST">
+                <div class="title">
+                    <h2>Criando chef</h2>
+                    <button type="submit">Salvar chef</button>
+                </div>
+                {%include "admin/chefs/fields.njk"%}
+            </form>
+        </div>
+    </section>
+{% endblock content %}

@@ -2,6 +2,23 @@
 {% block title %}
     <title>Foodfy - Home</title>
 {% endblock title %}
+{% block header %}
+  <header id="header">
+            <nav class="container">
+                <a href="/">
+                    <img src="/assets/logo.png " alt="Logo foodfy" class="logo"></a>
+
+                <div class="links">
+                    <a href="/about">Sobre</a>
+                    <a href="/recipes">Receitas</a>
+                    <a href="/chefs">Chefs</a>
+                    </div>
+                    
+               {%include "filter.njk"%}
+        
+             </nav>
+        </header>
+{% endblock header %}
 {% block content %}
     <section id="home">
         <div class="container">
@@ -21,7 +38,7 @@
                        <a href="/recipes/{{recipe.id}}"><img src="{{recipe.image}}" alt=""></a>
                         <div class="food-info">
                             <h3>{{recipe.title}}</h3>
-                            <p>por {{recipe.author}}</p>
+                            <p>por {{recipe.chef_name}}</p>
                         </div>
                     </li>
                 {% endfor %}
@@ -31,5 +48,10 @@
 {% endblock content %}
 
 {% block scripts %}
-<script src="scripts/recipeDetails.js"></script>
 {% endblock scripts %}
+
+    {% block footer %}
+        <footer>
+            <p>Todos direitos reservados, receitas Foodfy</p>
+        </footer>
+{% endblock footer %}

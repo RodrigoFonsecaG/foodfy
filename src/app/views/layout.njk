@@ -22,8 +22,9 @@
                 <div class="links">
                     <a href="/about">Sobre</a>
                     <a href="/recipes">Receitas</a>
+                    <a href="/chefs">Chefs</a> 
+                    </div>
                 </nav>
-            </div>
         </header>
         {% endblock header %}
 
@@ -31,11 +32,11 @@
         {% block content %}
         {% endblock content %}
 
-        <footer>
-            <p>Todos direitos reservados, receitas Foodfy</p>
-        </footer>
+    {% block footer %}
+    {% endblock footer %}
 
         {% block scripts %}
+        <script src="/scripts/scripts.js"></script>
         {% endblock scripts %}
     </body>
 </html>

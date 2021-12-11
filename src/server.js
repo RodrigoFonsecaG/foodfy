@@ -13,9 +13,9 @@ server.use(methodOverride('_method'));
 
 server.use(routes);
 
-nunjucks.configure('views', {
+nunjucks.configure('src/app/views', {
   express: server,
   noCache: true
 });
 
-server.listen('3000');
+server.listen('5000');
