@@ -4,23 +4,31 @@
 
 ## 📝 Sobre
 
-**Foodfy** é uma site de receitas, que permite que usuários possam ver as receitas cadastradas, seus ingredientes, modo de preparo, além de uma área administrativa, onde se tem acesso por dois tipos de perfis: usuário comum e administrador, sendo que cada um tem suas funcionalidades.
-  
-O site **Foodfy** é um projeto do LaunchBase, que é feita durante o curso com os conhecimentos aprendidos.
+**Foodfy** é uma site de receitas, que permite que usuários possam ver as receitas cadastradas, seus ingredientes, modo de preparo e os chefs responsáveis por cada receita 
+
+Além de uma área administrativa, que permite cadastrar/editar/deletar chefs e receitas.
+
+Outras implementações:
+-Paginação
+-Filtragem por nome
 
 ---------
 
 ## 🖥️ Demonstração
 
 <h1>
-    <img src="home.png"
+    <img src="index-user.png"
+</h1> 
+  
+<h1>
+    <img src="index-admin.png"
 </h1> 
 
-
+<h1>
+    <img src="create.png"
+</h1> 
 
 ----------
-
-
 
 
 ## 🚀 Tecnologias e ferramentas utilizadas
@@ -32,6 +40,7 @@ O site **Foodfy** é um projeto do LaunchBase, que é feita durante o curso com 
 - **Express**
 - **Nunjucks**
 - **Method override**
+- **PostgreeSQL/Postbird**
 
 ---------
 
