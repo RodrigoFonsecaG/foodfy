@@ -11,6 +11,7 @@ Além de uma área administrativa, que permite cadastrar/editar/deletar chefs e 
 Outras implementações:
 -Paginação
 -Filtragem por nome
+-Upload de imagens
 
 ---------
 
@@ -41,6 +42,7 @@ Outras implementações:
 - **Nunjucks**
 - **Method override**
 - **PostgreeSQL/Postbird**
+- **Multer**
 
 ---------
 
