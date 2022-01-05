@@ -2,87 +2,69 @@ const db = require('../../config/db');
 const { date } = require('../../lib/utils');
 
 module.exports = {
-  all(callback) {
-    const query = `SELECT * FROM chefs`;
+  all() {
+    const query = `SELECT chefs.*, count(recipes) AS total_recipes
+    FROM chefs
+    LEFT JOIN recipes ON (chefs.id = recipes.chef_id)
+    GROUP BY chefs.id
+    `;
 
-    db.query(query, function (err, results) {
-      if (err) throw err;
-
-      callback(results.rows);
-    });
+    return db.query(query);
   },
 
-  find(id, callback) {
+  find(id) {
     const query = `SELECT chefs.*, count(recipes) AS total_recipes
         FROM chefs
         LEFT JOIN recipes ON (chefs.id = recipes.chef_id)
         WHERE chefs.id = $1
-        GROUP BY chefs.id`
+        GROUP BY chefs.id
+        `
 
-    db.query(query,[id],function (err, results) {
-        if (err) throw err;
-
-        callback(results.rows[0]);
-      }
-    );
+    return db.query(query,[id]);
   },
 
-  chefRecipes(id, callback){
+  async chefRecipes(id){
     const query = `
-        SELECT title, image, recipes.id AS recipe_id
+        SELECT title, recipes.id AS recipe_id
         FROM recipes
         LEFT JOIN chefs ON (chefs.id = recipes.chef_id)
         WHERE chefs.id = $1
         ORDER BY recipes.created_at DESC`
 
-    db.query(query, [id], function(err, results){
-      if(err) throw err;
 
-      callback(results.rows)
-    })
+
+   return db.query(query, [id]);
   },
 
-  post(data, callback) {
+  post(data, fileId) {
     const query = `
         INSERT INTO chefs(
             name,
-            avatar_url,
-            created_at
+            created_at,
+            file_id
         )VALUES($1,$2,$3)
         RETURNING id`;
 
-    const values = [data.name, data.avatar_url, date(Date.now()).iso];
+    const values = [data.name, date(Date.now()).iso, fileId];
 
-    db.query(query, values, function (err, results) {
-      if (err) throw err;
-
-      callback(results.rows[0]);
-    });
+    return db.query(query, values);
   },
   
-  update(data, callback) {
+  update(data, fileId) {
     const query = `UPDATE chefs SET
         name = ($1),
-        avatar_url = ($2)
+        file_id = ($2)
         WHERE id = $3
         `;
 
-    const values = [data.name, data.avatar_url, data.id];
+    const values = [data.name, fileId, data.id];
 
-    db.query(query, values, function (err, results) {
-      if(err) throw err;
-
-      callback(results.rows[0]);
-    })
+    return db.query(query, values)
   },
 
-  delete(id,callback){
+  delete(id){
     const query = `DELETE FROM chefs WHERE id = $1`
 
-    db.query(query, [id], function (err, results) {
-      if(err) throw err;
-
-      callback();
-    })
+    return db.query(query, [id])
   }
 };

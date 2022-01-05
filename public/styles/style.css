@@ -18,7 +18,7 @@ a {
 :root {
   --title-color: #111111;
   --text-color: #777777;
-  --purple-color: #6558C3;
+  --purple-color: #6558c3;
 }
 
 /*==================== BASE ======================*/
@@ -30,6 +30,13 @@ html {
 body {
   font: 400 1.125rem;
   -webkit-font-smoothing: antialiased;
+  margin-bottom: 5rem;
+
+  display:flex; 
+  flex-direction:column; 
+
+  height:100vh;
+  margin:0;
 }
 
 p {
@@ -42,12 +49,16 @@ h3 {
   font-weight: bold;
 }
 
+footer{
+  margin-top: auto !important;
+}
+
 .links a.active {
   font-weight: bold;
 }
 
-button{
-  border:none;
+button {
+  border: none;
   font-size: 16px !important;
   padding: 0.7rem 1rem;
   background-color: var(--purple-color);
@@ -59,26 +70,135 @@ button{
 }
 
 /*==================== LAYOUT ======================*/
+
 .container {
-  margin-left: 25vw;
-  margin-right: 25vw;
+  width: 90%;
+  max-width: 940px;
+  margin: 0 auto;
 }
 
-@media (max-width: 1270px) {
-  .container {
-    margin-left: 10vw;
-    margin-right: 10vw;
+
+
+
+.photos-container {
+  display: grid;
+  grid-template-columns: 150px 5fr;
+  height: 100%;
+  width: 100%;
+}
+
+#photos-upload {
+  position: relative;
+
+  display: block;
+  overflow: hidden;
+
+  width: 100%;
+}
+
+#photos-upload p {
+  padding: 1.8rem 1.6rem;
+  border-radius: 4px;
+  box-shadow: 0 2px 2px -6px #333;
+  background-color: transparent;
+  color: #999999;
+
+  border: 1px solid #999999;
+
+  text-align: center;
+
+  text-transform: uppercase;
+  font-size: 4rem;
+
+  width: 100%;
+  height: 140px;
+  max-width: 140px;
+
+  margin: 0 10px 0 0;
+}
+
+#photos-input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+
+  cursor: pointer;
+}
+
+#photos-preview {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, max-content));
+  grid-auto-flow: row;
+  gap: 0.4rem;
+
+  align-items: center;
+
+  align-self: flex-end;
+}
+
+#photos-preview .photo img {
+  width: 140px;
+  height: 140px;
+
+  display: block;
+  object-fit: cover;
+
+  border-radius: 4px;
+  box-shadow: 0 2px 2px -6px #333;
+}
+
+#photos-preview .photo {
+  position: relative;
+  max-width: 140px;
+}
+
+#photos-preview .photo i {
+  color: #FF0000;
+  font-weight: bold;
+  font-size: 2rem;
+  font-style: normal;
+  font-family: 'Roboto', sans-serif;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  opacity: 0;
+  cursor: pointer;
+
+  transition: 400ms;
+}
+
+#photos-preview .photo i:hover{
+  opacity: 1;
+
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+@media (max-width: 530px) {
+  .photos-container {
+    grid-template-columns: 1fr;
+    display: flex;
+    align-items: center;
+  }
+
+  #photos-preview {
+    grid-template-columns:1fr;
+  }
+
+  #photos-upload p {
+    margin: 0 10px 10px 0;
   }
 }
-
-@media (max-width: 768px) {
-  .container {
-    margin-left: 5vw;
-    margin-right: 5vw;
-  }
-}
-
-
-
-
-

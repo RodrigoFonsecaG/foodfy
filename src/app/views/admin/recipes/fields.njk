@@ -1,18 +1,45 @@
-<div class="item">
-    <h4>Nome da receita</h4>
-    <input type="text" name="title" id="title" value="{{ recipe.title }}"></div>
+<div class="item photos-container">
+    <div id="photos-upload">
+        <h4>Imagem da receita</h4>
+        <input 
+        id="photos-input"
+        type="file" 
+        name="photos" 
+        multiple 
+        accept="image/*"
+        onchange="PhotosUpload.handleFileInput(event)"
+        >
+        <p>+</p>
+    </div>
+    <div id="photos-preview">
+        {% if files %}
+        {% for file in files %}
+        <div class="photo" id="{{file.id}}">
+            <img src="{{file.src}}">
+            <i onclick="PhotosUpload.removeOldPhoto(event)">X</i>
+        </div>
+        {% endfor %}
+        <input type="hidden" name="removed_files">
+        {% endif %}
+    </div>
+</div>
+
+
     <div class="item">
-        <h4>Chef</h4>
-        <select name="chef">
-            {% for chef in chefs %}
-                
-                <option value="{{chef.id}}"{% if chef.id == recipe.chef_id %} selected {% endif %}>{{chef.name}}</option>
-               
-            {% endfor %}
-        </select>
+        <h4>Nome da receita</h4>
+        <input type="text" name="title" id="title" value="{{ recipe.title }}">
+        
+</div>
+
         <div class="item">
-            <h4>Imagem da receita</h4>
-            <input type="url" name="image" id="image" placeholder="https://" value="{{ recipe.image }}"></div>
+            <h4>Chef</h4>
+            <select name="chef">
+                {% for chef in chefs %}
+                    <option value="{{ chef.id }}" {% if chef.id == recipe.chef_id %} selected {% endif %}>{{ chef.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
             <div class="item">
                 <h4>Ingredientes</h4>
                 <div class="ingredients">
@@ -28,24 +55,28 @@
                         </div>
                         <p class="add-ingredient">Adicionar novo ingrediente</p>
                     </div>
+
+
                     <div class="item">
                         <h4>Modo de preparo</h4>
                         <div class="preparations">
-                                                {% if recipe %}
-                        {% for preparation in recipe.preparation %}
-                            <div class="preparation">
-                                <input type="text" name="preparations[]" id="preparations" value="{{ preparation }}">
-                            </div>
-                                {% endfor %}
+                            {% if recipe %}
+                                {% for preparation in recipe.preparation %}
+                                    <div class="preparation">
+                                        <input type="text" name="preparations[]" id="preparations" value="{{ preparation }}"></div>
+                                    {% endfor %}
                                 {% else %}
-                                <div class="preparation">
-                                <input type="text" name="preparations[]" id="preparations"></div>
-                                {% endif %}
+                                    <div class="preparation">
+                                        <input type="text" name="preparations[]" id="preparations"></div>
+                                    {% endif %}
+                                </div>
+                                <p class="add-preparation">Adicionar novo passo</p>
                             </div>
-                            <p class="add-preparation">Adicionar novo passo</p>
-                        </div>
-                        <div class="item">
-                            <h4>Informações adicionais</h4>
-                            <textarea name="information" id="information">{{ recipe.information}}</textarea>
-                        </div>
-                        <script src="/scripts/dynamicField.js"></script>
+
+                            <div class="item">
+                                <h4>Informações adicionais</h4>
+                                <textarea name="information" id="information">{{ recipe.information }}</textarea>
+                            </div>
+
+                            
+                            <script src="/scripts/dynamicField.js"></script>

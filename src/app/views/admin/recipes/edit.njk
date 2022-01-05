@@ -9,12 +9,13 @@
     <section id="edit admin">
         <div class="container container-edit">
 
-        <form action="/admin/recipes?_method=DELETE" method="POST" class="delete-form">
+        <form action="/admin/recipes?_method=DELETE" method="POST" class="delete-form" enctype="multipart/form-data">
             <input type="hidden" name="id" value="{{recipe.id}}"/>
             <button class="delete" type="submit" onclick="return confirm('Tem certeza que deseja deletar?')">Deletar</button>
+            <input type="hidden" name="filesId">
         </form>
 
-            <form action="/admin/recipes?_method=PUT" method="POST" class="edit-form">
+            <form action="/admin/recipes?_method=PUT" method="POST" class="edit-form" enctype="multipart/form-data">
                 <div class="title">
                     <h2>Editando receita</h2>
                         <button type="submit">Salvar receita</button>

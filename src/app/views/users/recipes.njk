@@ -2,6 +2,12 @@
 {% block title %}
     <title>Foodfy - Receitas</title>
 {% endblock title %}
+
+{{actionFilter}}
+{% set actionFilter = "/recipes" %}
+{{actionFilter}}
+
+
 {% block header %}
     <header id="header">
         <nav class="container">
@@ -26,7 +32,7 @@
                     {% for recipe in recipes %}
                         <li class="receita">
                             <a href="/recipes/{{ recipe.id }}">
-                                <img src="{{ recipe.image }}" alt=""></a>
+                                <img src="{{ recipe.img }}" alt=""></a>
                                 <div class="food-info">
                                     <h3>{{ recipe.title }}</h3>
                                     <p>por

@@ -11,7 +11,7 @@
     <section id="index admin">
         <div class="container">
             <div class="title">
-                <h2>Gerenciar receitas</h2>
+                <h2>Gerenciar receitas ({{recipes.length}})</h2>
                 <a href="/admin/recipes/create"><button>Novo</button></a>
 
                 {%include "filter.njk"%}
@@ -19,7 +19,9 @@
             <div class="recipes">
                 {% for recipe in recipes %}
                     <div class="recipe">
-                        <img src="{{ recipe.image }}" alt="">
+
+                            <img src="{{ recipe.img }}" alt="{{loop.first}}">
+
                             <div class="recipe-info">
                                 <h4>{{ recipe.title }}</h4>
                                 <cite>por

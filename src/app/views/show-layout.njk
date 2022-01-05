@@ -1,4 +1,11 @@
-<img src="{{ recipe.image }}" alt="{{ recipe.title }}">
+<div class="highlight">
+<img src="{{ files[0].src }}" alt="{{ files[0].name }}">
+</div>
+<div class="photos-gallery">
+    {% for file in files %}
+    <img src="{{ file.src }}" alt="{{ file.name }}" onclick="Gallery.setImage(event)">
+    {% endfor %}
+</div>
     <div class="food-title">
         <h1>{{ recipe.title }}</h1>
         <p>por

@@ -13,8 +13,9 @@
                     <a href="/recipes">Receitas</a>
                     <a href="/chefs">Chefs</a>
                     </div>
-                    
+
                {%include "filter.njk"%}
+
         
              </nav>
         </header>
@@ -35,7 +36,7 @@
             <ul class="receitas">
                 {% for recipe in recipes %}
                     <li class="receita">
-                       <a href="/recipes/{{recipe.id}}"><img src="{{recipe.image}}" alt=""></a>
+                       <a href="/recipes/{{recipe.id}}"><img src="{{recipe.img}}" alt=""></a>
                         <div class="food-info">
                             <h3>{{recipe.title}}</h3>
                             <p>por {{recipe.chef_name}}</p>

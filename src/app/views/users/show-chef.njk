@@ -4,18 +4,12 @@
         {{ chef.name }}</title>
     <link rel="stylesheet" href="/styles/adminPage.css">
     {% endblock title %}
-    {% block header %}
-        {% include "admin/parts/admin-header.njk" %}
-    {% endblock header %}
     {% block content %}
         <section id="chef-details admin">
             <div class="container">
                
                     <div class="header-info">
                     <h1 class="title">Chef: {{ chef.name }}</h1>
-                    <a href="/admin/chefs/{{ chef.id }}/edit">
-                        <button>Editar Chef</button>
-                    </a>
                     </div>
 
 

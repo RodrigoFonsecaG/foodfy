@@ -2,6 +2,26 @@
     <h4>Nome do chef</h4>
     <input type="text" name="name" id="name" value="{{chef.name}}"></div>
     <div class="item">
-        <h4>Avatar do chef</h4>
-        <input type="text" name="avatar_url" id="avatar_url" placeholder="https://" value="{{chef.avatar_url}}"></div>
+    <div id="photos-upload" class="chef">
+        <div class="item"></div>
+        <h4>Avatar</h4>
+        <input type="hidden" name="file_id" value={{file.id}}>
+
+        <input 
+        class="button chef"
+        id="photos-input"
+        type="file" 
+        name="photos" 
+        accept="image/*"
+        >
+            <input type="text" value={{file.name}} name="file_name" style="color: #C6C6C6; margin-bottom: 1rem" disabled>
+            <button>Enviar Avatar</button>
+
+
+        <input type="hidden" name="removed_files">
+    </div>
+
+
+
+    
         

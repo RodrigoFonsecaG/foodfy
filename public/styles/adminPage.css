@@ -154,10 +154,15 @@ form button{
     object-fit: cover;
 }
 
+.chef-info{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
 .chef-info .chef-name{
     color: var(--title-color);
     font-size: 18px;
-    margin-bottom: 10px;
 }
 
 .chef-info a{
