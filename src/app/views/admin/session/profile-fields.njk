@@ -1,0 +1,25 @@
+<div class="item">
+    <h4>Nome</h4>
+    <input type="text" name="name" id="name" value="{{user.name}}">
+</div>
+
+<div class="item">
+    <h4>Email</h4>
+    <input type="email" name="email" id="email" value="{{user.name}}">
+</div>
+
+<div class="item isAdmin">
+    <input type="checkbox" id="is_admin" name="is_admin" {% if "checked" %}
+    value="1"
+    {%else%}
+    value="0"
+    {% endif %}>
+    <h4>Administrador</h4>
+</div>
+
+        
+
+
+
+    
+        

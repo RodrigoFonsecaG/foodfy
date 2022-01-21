@@ -27,4 +27,12 @@
 
         </div>
     </section>
+
+    {% if error %}
+    <script>
+        setTimeout(() => {
+        window.location = `recipes`
+        },2000)
+    </script>
+    {% endif %}
 {% endblock content %}

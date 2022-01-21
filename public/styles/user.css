@@ -1,0 +1,110 @@
+#create\ admin > div > form > div.item.isAdmin {
+  display: flex;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+#create\ admin > div > form > div.item.isAdmin input[type='checkbox'] {
+  width: initial;
+  padding: 0;
+  border-radius: 0;
+  border: 0;
+}
+
+#create\ admin > div > form > div.item.isAdmin h4 {
+  margin: 0 0 0 0.5rem;
+}
+
+.messages {
+  position: absolute;
+  top: 0;
+  right: 0%;
+  z-index: 2;
+  margin: 12px;
+  width: 340px;
+  height: 140px;
+
+  color: white;
+  font-weight: bold;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 4px;
+
+  opacity: 1;
+
+  animation: hidemessage 400ms 5s ease-out forwards;
+}
+
+.messages.error {
+  background-color: #dc4747;
+}
+
+.messages.sucess {
+  background-color: rgb(7, 138, 238);
+}
+
+@keyframes hidemessage {
+  to {
+    top: -1000px;
+    opacity: 0;
+  }
+}
+
+/*Lista de usuarios*/
+.users-list {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.users-list .user {
+  max-width: 170px;
+
+  display: grid;
+  gap: 1rem;
+
+  margin-bottom: 52px;
+}
+
+.users-list .user .name {
+  font-size: 18px;
+}
+
+.users-list .user .email {
+  font-size: 14px;
+}
+
+.users-list .user .buttons a {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.users-list .user .buttons a:first-child {
+  margin-right: 1rem;
+  color: #6558c3;
+}
+
+.users-list .user .buttons a:last-child {
+  margin-right: 1rem;
+  color: #F55A5A;
+}
+
+@media (max-width: 760px){
+    .users-list {
+        grid-template-columns: repeat(2, 1fr);
+      }
+}
+
+@media (max-width: 540px){
+    .users-list {
+        grid-template-columns: 1fr;
+        
+      }
+
+      .users-list .user{
+        margin: 0 auto;
+      }
+}

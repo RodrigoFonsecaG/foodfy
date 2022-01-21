@@ -2,7 +2,6 @@ const Chef = require('../models/Chef');
 const ChefFile = require('../models/ChefFile');
 const RecipeFile = require('../models/RecipeFile');
 const File = require('../models/File');
-const { post, show } = require('./recipes');
 
 module.exports = {
   async index(req, res) {

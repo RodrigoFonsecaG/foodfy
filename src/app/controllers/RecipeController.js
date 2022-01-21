@@ -17,17 +17,6 @@ module.exports = {
 
   async post(req, res) {
     try {
-      const keys = Object.values(req.body);
-
-      for (let key of keys) {
-        if (key == '') return res.send('Fill in all fields!');
-      }
-
-      // Verificação se foi enviada imagem pelo usuario
-      if (req.files.length == 0) {
-        return res.send('Please, send at least one image');
-      }
-
       let results = await Recipe.post(req.body);
       const recipe = results.rows[0];
 
@@ -42,7 +31,8 @@ module.exports = {
 
       return res.redirect(`/admin/recipes/${recipe.id}`);
     } catch (err) {
-      console.error(err);
+      console.error(err)
+      return res.render('admin/recipes/create', {error: "Erro inesperado!"});
     }
   },
 
@@ -137,13 +127,8 @@ module.exports = {
 
   async put(req, res) {
     try {
-      const keys = Object.keys(req.body);
 
-      for (let key of keys) {
-        if (req.body[key] == '' && key != 'removed_files') {
-          return res.send('Preencha todos os campos');
-        }
-      }
+
 
       if (req.files.length != 0) {
         const filesPromises = req.files.map((file) => File.create({ ...file }));
@@ -169,6 +154,8 @@ module.exports = {
         const removedFilesPromise = removedFiles.map((id) => File.delete(id));
         await Promise.all(removedFilesPromise);
       }
+
+ 
 
       await Recipe.update(req.body);
 

@@ -232,9 +232,11 @@ if (formDelete) {
 
 
 /*Remover imagem do input de chefs*/
+const inputFileChef = document.querySelector('input[type="file"].chef');
 
+if(inputFileChef){
 function removeOne(){
-  const inputFileChef = document.querySelector('input[type="file"].chef');
+  
   const fileOriginalId = document.querySelector('input[name="file_id"]');
   const removedFiles = document.querySelector('input[name="removed_files"]');
 
@@ -244,3 +246,4 @@ function removeOne(){
 }
 
 removeOne();
+}

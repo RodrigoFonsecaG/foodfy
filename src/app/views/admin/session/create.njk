@@ -1,0 +1,21 @@
+{% extends "layout.njk" %}
+{% block title %}
+    <title>Foodfy - Criar</title>
+    <link rel="stylesheet" href="/styles/adminPage.css">
+    {% endblock title %}
+    {% block header %}
+        {% include "admin/parts/admin-header.njk" %}
+    {% endblock header %}
+    {% block content %}
+        <section id="create admin">
+            <div class="container user">
+                <form action="/admin/users" method="POST">
+                    <div class="title">
+                        <h2>Criar usuário</h2>
+                        <button type="submit">Salvar</button>
+                    </div>
+                    {%include "admin/session/profile-fields.njk"%}
+                </form>
+            </div>
+        </section>
+    {% endblock content %}
