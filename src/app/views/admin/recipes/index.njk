@@ -11,7 +11,16 @@
     <section id="index admin">
         <div class="container">
             <div class="title">
-                <h2>Gerenciar receitas ({{recipes.length}})</h2>
+                <form action="/admin/recipes" name="select" method="get" onchange="this.submit()">
+                <select name="select">
+                    <option value="all" {% if select == "allFromUser" %} 
+                    selected
+                    {% endif %}>Gerenciar receitas ({{recipes.length}})</option>
+                    <option value="allFromUser" {% if select == "allFromUser" %} 
+                    selected
+                    {% endif %}>Minhas receitas</option>
+                </select>
+                </form>
                 <a href="/admin/recipes/create"><button>Novo</button></a>
 
                 {%include "filter.njk"%}
@@ -25,7 +34,7 @@
                             <div class="recipe-info">
                                 <h4>{{ recipe.title }}</h4>
                                 <cite>por
-                                    {{ recipe.chef_name }}</cite>
+                                    {{ recipe.chef_name or recipe.user_name }}</cite>
                                 <a href="/admin/recipes/{{ recipe.id }}">Visualizar</a>
                             </div>
                     </div>

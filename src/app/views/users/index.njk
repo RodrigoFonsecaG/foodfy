@@ -12,8 +12,10 @@
                     <a href="/about">Sobre</a>
                     <a href="/recipes">Receitas</a>
                     <a href="/chefs">Chefs</a>
+                    {% if not session.userId %}
+                    <a href="/users/login">Login</a> 
+                    {% endif %}
                     </div>
-
                {%include "filter.njk"%}
 
         

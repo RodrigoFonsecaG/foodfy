@@ -45,7 +45,7 @@ module.exports = {
         )VALUES($1,$2,$3)
         RETURNING id`;
 
-    const values = [data.name, date(Date.now()).iso, fileId];
+    const values = [`Chef: ${data.name}`, date(Date.now()).iso, fileId];
 
     return db.query(query, values);
   },

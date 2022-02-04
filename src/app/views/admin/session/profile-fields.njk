@@ -5,9 +5,10 @@
 
 <div class="item">
     <h4>Email</h4>
-    <input type="email" name="email" id="email" value="{{user.name}}">
+    <input type="email" name="email" id="email" value="{{user.email}}">
 </div>
 
+{% if not user %}
 <div class="item isAdmin">
     <input type="checkbox" id="is_admin" name="is_admin" {% if "checked" %}
     value="1"
@@ -16,6 +17,15 @@
     {% endif %}>
     <h4>Administrador</h4>
 </div>
+{% endif %}
+
+
+{% if user %}
+<div class="item">
+    <h4>Senha</h4>
+    <input type="password" name="password" id="password" placeholder="Digite a senha">
+</div>
+{% endif %}
 
         
 

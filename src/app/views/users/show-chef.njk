@@ -26,8 +26,9 @@
                             <img src="{{recipe.img}}" alt="">
                                 <div class="recipe-info">
                                     <h4>{{recipe.title}}</h4>
-                                    <cite>por
-                                        {{ chef.name }}</cite>
+                                    {% if recipe.chef_name%}
+                                        <cite>por {{ chef.name }}</cite>
+                                    {% endif %}
                                     <a href="/admin/recipes/{{recipe.recipe_id}}">Visualizar</a>
                                 </div>
                             </li>

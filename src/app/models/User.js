@@ -1,6 +1,9 @@
 const db = require('../../config/db');
 const {hash} = require('bcryptjs')
 const mailer = require('../../lib/mailer')
+const RecipeFile = require('../models/RecipeFile');
+const File = require('../models/File');
+const fs = require('fs');
 
 module.exports = {
   paginate(params) {
@@ -76,8 +79,6 @@ module.exports = {
       <p>Sua senha é: ${randomPassword}, use-a junto com o seu email para logar no foodfy</p>`
     })
 
-    console.log(randomPassword);
-
     const passwordHash = await hash(randomPassword, 8);
 
     const values = [
@@ -90,5 +91,44 @@ module.exports = {
     const results = await db.query(query, values);
 
     return results.rows[0].id;
-  }
+  },
+  async update(id, fields){
+    let query = `UPDATE users SET`
+
+    Object.keys(fields).map((key,index,array) => {
+      if((index+1) < array.length) {
+        query = `${query}
+        ${key} =  '${fields[key]}',
+        `    
+      }else{
+        query = `${query}
+        ${key} =  '${fields[key]}'
+        WHERE id = ${id}
+        `    
+      }
+    })
+
+
+    await db.query(query);
+},
+async delete(id){
+  let results = await db.query('SELECT * FROM recipes WHERE user_id = $1', [id]);
+  const recipes = results.rows;
+
+  
+
+  const recipeFilesPromise = recipes.map((recipe) => RecipeFile.find(recipe.id));
+  const recipeFilesPromiseResolved = await Promise.all(recipeFilesPromise);
+
+const removedFilesPromise = recipeFilesPromiseResolved.map((files) => {
+  
+  files.rows.map(file => File.delete(file.id))
+});
+
+await Promise.all(removedFilesPromise);
+
+await db.query('DELETE FROM users WHERE id = $1', [id]);
+
+
+}
 };

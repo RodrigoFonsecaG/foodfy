@@ -1,0 +1,22 @@
+{% extends "layout.njk" %}
+{% block title %}
+    <title>Foodfy - Editar</title>
+    <link rel="stylesheet" href="/styles/adminPage.css">
+    {% endblock title %}
+    {% block header %}
+        {% include "admin/parts/admin-header.njk" %}
+    {% endblock header %}
+    {% block content %}
+        <section id="create admin">
+            <div class="container user">
+                <form action="/admin/users/{{user.id}}?_method=PUT" method="POST">
+                    <div class="title">
+                        <h2>Bem vindo {{user.name}}</h2>
+                        <button type="submit">Salvar</button>
+                    </div>
+                    {%include "admin/session/profile-fields.njk"%}
+                    <input type="hidden" name="id" value={{user.id}}>
+                </form>
+            </div>
+        </section>
+    {% endblock content %}

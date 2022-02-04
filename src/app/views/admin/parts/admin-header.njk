@@ -7,5 +7,12 @@
                     <a href="/admin/chefs">Chefs</a>
                     <a href="/admin/users/">Usuários</a>
                 </div>
+                {% if session.userId %}
+                <div class="logout">
+                    <form action="/users/logout" method="POST">
+                        <button>Sair</button>
+                    </form>
+                </div>
+                {% endif %}
             </nav>
 </header>

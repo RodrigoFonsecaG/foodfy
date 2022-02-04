@@ -10,12 +10,13 @@
     {% block content %}
         <section id="chef-details admin">
             <div class="container">
-               
                     <div class="header-info">
                     <h1 class="title">Chef: {{ chef.name }}</h1>
+                    {% if session.is_admin %}
                     <a href="/admin/chefs/{{ chef.id }}/edit">
                         <button>Editar Chef</button>
                     </a>
+                    {% endif %}
                     </div>
 
 

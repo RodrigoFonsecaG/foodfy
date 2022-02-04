@@ -11,9 +11,11 @@
             <div class="container">
                 <div class="header-info">
                     <h1 class="title">Gerenciar chefs</h1>
+                    {% if session.is_admin %}
                     <a href="/admin/chefs/create">
                         <button>Novo</button>
                     </a>
+                    {% endif %}
                 </div>
                 <div class="chefs">
                     {% for chef in chefs %}

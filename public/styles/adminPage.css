@@ -22,6 +22,7 @@
     text-transform: uppercase;
     color: #999;
     margin-left: 1rem;
+    cursor: pointer;
 }
 
 #header.admin .links a.active{
@@ -230,5 +231,11 @@ form button{
         margin-bottom: 1rem;
     }
     
+}
+
+/*SELECT DE RECIPES*/
+
+select[name="recipes-select"]{
+    max-width: 200px;
 }
 

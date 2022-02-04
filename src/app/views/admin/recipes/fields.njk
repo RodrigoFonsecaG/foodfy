@@ -27,11 +27,11 @@
 
     <div class="item">
         <h4>Nome da receita</h4>
-        <input type="text" name="title" id="title" value="{{ recipe.title }}">
-        
-</div>
+        <input type="text" name="title" id="title" value="{{ recipe.title }}">    
+    </div>
 
-        <div class="item">
+    {% if req.session.is_admin %}
+            <div class="item">
             <h4>Chef</h4>
             <select name="chef">
                 {% for chef in chefs %}
@@ -39,6 +39,12 @@
                 {% endfor %}
             </select>
         </div>
+
+        {%else%}
+            
+        <input type="hidden" name="user_name" value="{{session.userId}}">
+    {% endif %}
+
 
             <div class="item">
                 <h4>Ingredientes</h4>

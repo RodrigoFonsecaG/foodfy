@@ -95,6 +95,7 @@ module.exports = {
 
         const lastAdded = await Promise.all(recipesPromise);
 
+
         return res.render('users/recipes.njk', {
           recipes: lastAdded,
           filter,
@@ -111,7 +112,11 @@ module.exports = {
       const id = +req.params.id;
 
       let results = await Recipe.find(id);
-      const recipe = results.rows[0];
+      let recipe = results.rows[0];
+
+      if(!recipe.chef_name){
+        recipe = await Recipe.findUser(id);
+      }
 
       results = await RecipeFile.find(id);
 

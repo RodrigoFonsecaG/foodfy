@@ -24,6 +24,8 @@ module.exports = {
           }
         }
 
+        console.log(req.body)
+
       next();
     }
 }

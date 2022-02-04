@@ -11,7 +11,7 @@
             <div class="container">
                      <div class="title">
                         <h2>Usuários</h2>
-                        
+                        <a href="/admin/users/create"><button>Novo</button></a>
                     </div>
                 <div class="users-list">
                     {% for user in users %}
@@ -20,7 +20,12 @@
                         <p class="email">{{user.email}}</p>
                         <div class="buttons">
                             <a href="/admin/users/{{user.id}}/edit">Editar</a>
-                            <a href="/admin/users/{{user.id}}">Deletar</a>
+                            <form action="/admin/users/{{user.id}}?_method=DELETE" method="post">
+                            <button class="delete-user" onclick="return confirm('Tem certeza que deseja deletar esse usuário?');">
+                                <a >Deletar</a>
+                            </button>
+                            
+                            </form>
                         </div>
                     </div>
                     {% endfor %}

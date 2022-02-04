@@ -32,7 +32,7 @@ module.exports = {
       return res.redirect(`/admin/recipes/${recipe.id}`);
     } catch (err) {
       console.error(err)
-      return res.render('admin/recipes/create', {error: "Erro inesperado!"});
+      return res.render('admin/recipes/create.njk', {error: "Erro inesperado!"});
     }
   },
 
@@ -41,15 +41,26 @@ module.exports = {
       const filter = req.query.filter;
       let results;
 
+      const select = req.query.select;
+
       if(filter){
         results = await Recipe.findBy(filter);
       }
       else{
+        if(select == 'all'){
+        results = await Recipe.all();
+      }else if(select == 'allFromUser'){
+        results = await Recipe.allFromUser(req.session.userId);
+      }
+      else{
         results = await Recipe.all();
       }
+      }
 
-
+  
+      
       const recipes = results.rows;
+
 
       async function getImage(recipeId){
         let results = await RecipeFile.find(recipeId);
@@ -68,9 +79,9 @@ module.exports = {
       const lastAdded = await Promise.all(recipesPromise)
 
       recipes.total = recipes.length
+      
 
-
-      return res.render('admin/recipes/index.njk', {recipes: lastAdded, filter});
+      return res.render('admin/recipes/index.njk', {recipes: lastAdded, filter, select});
     } catch (err) {
       console.error(err);
     }
@@ -81,7 +92,13 @@ module.exports = {
       const id = +req.params.id;
 
       let results = await Recipe.find(id);
-      const recipe = results.rows[0];
+      let recipe = results.rows[0];
+
+
+      if(!recipe.chef_name){
+        results = await Recipe.findUser(id);
+        recipe = results.rows[0];
+      }
 
       results = await RecipeFile.find(id);
 
@@ -103,6 +120,7 @@ module.exports = {
     try {
       const id = req.params.id;
 
+
       let results = await Recipe.find(id);
       const recipe = results.rows[0];
 
@@ -119,7 +137,18 @@ module.exports = {
         )}`
       }));
 
-      return res.render('admin/recipes/edit.njk', { recipe, chefs, files });
+
+      if(recipe.user_id == req.session.userId || req.session.is_admin){
+        return res.render('admin/recipes/edit.njk', { recipe, chefs, files });
+      }else{
+        return res.render('admin/recipes/show.njk', { 
+          recipe,
+          files,
+          chefs,
+        error: "Você somente pode editar suas receitas!" });
+      }
+      
+      
     } catch (err) {
       console.error(err);
     }

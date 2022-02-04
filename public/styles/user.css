@@ -35,6 +35,8 @@
 
   opacity: 1;
 
+  padding: 1rem;
+
   animation: hidemessage 400ms 5s ease-out forwards;
 }
 
@@ -90,6 +92,59 @@
 .users-list .user .buttons a:last-child {
   margin-right: 1rem;
   color: #F55A5A;
+}
+
+#header.admin .logout form button{
+  font-weight: bold;
+  font-size: 1rem;
+  text-transform: uppercase;
+  color: white;
+  margin-left: 1rem;
+  cursor: pointer;
+  background: none;
+}
+
+#header\ session > nav{
+  justify-content: center;
+}
+
+.session div.container{
+  max-width: 500px;
+}
+
+.session div.container h2{
+  text-align: center;
+  margin-top: 8rem;
+}
+
+.session div.container h2{
+  color: #111111;
+}
+
+.session div.container form{
+  margin: 50px 0;
+}
+
+.session div.container .footer{
+display: flex;
+align-items: center;
+justify-content: space-between;
+margin-top: 2rem;
+}
+
+.session div.container .footer a {
+  font-size: 16px;
+color: #969696;
+}
+
+.user .buttons{
+  display: flex;
+}
+
+.user .buttons form button.delete-user{
+  padding: 0;
+  background-color: initial;
+  display: flex;
 }
 
 @media (max-width: 760px){

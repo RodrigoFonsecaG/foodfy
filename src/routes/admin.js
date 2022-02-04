@@ -7,13 +7,14 @@ const ChefController = require('../app/controllers/ChefController.js');
 
 const RecipeValidator = require('../app/validators/recipes')
 
+const {onlyAdmin, onlyUser} = require('../app/middlewares/session');
 
 
 /*ADMIN AREA*/
-routes.get("/admin/recipes", RecipeController.index);
-routes.get("/admin/recipes/create", RecipeController.create);
-routes.get("/admin/recipes/:id", RecipeController.show);
-routes.get("/admin/recipes/:id/edit", RecipeController.edit);
+routes.get("/admin/recipes", onlyUser, RecipeController.index);
+routes.get("/admin/recipes/create", onlyUser, RecipeController.create);
+routes.get("/admin/recipes/:id", onlyUser, RecipeController.show);
+routes.get("/admin/recipes/:id/edit", onlyUser, RecipeController.edit);
 
 const middlewaresPOST = [
     multer.array('photos', 5), 
@@ -32,10 +33,10 @@ routes.delete("/admin/recipes", multer.array('photos', 5), RecipeController.dele
 
 
 //Chefs
-routes.get("/admin/chefs", ChefController.index)
-routes.get("/admin/chefs/create", ChefController.create)
-routes.get("/admin/chefs/:id", ChefController.show);
-routes.get("/admin/chefs/:id/edit", ChefController.edit);
+routes.get("/admin/chefs", onlyUser, ChefController.index)
+routes.get("/admin/chefs/create", onlyAdmin, ChefController.create)
+routes.get("/admin/chefs/:id", onlyUser, ChefController.show);
+routes.get("/admin/chefs/:id/edit", onlyAdmin, ChefController.edit);
 
 routes.post("/admin/chefs", multer.array('photos', 1), ChefController.post);
 routes.put("/admin/chefs", multer.array('photos', 1), ChefController.update);
